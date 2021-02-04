@@ -32,7 +32,7 @@ include('connexion.php');
 	}
 	$requette="INSERT INTO etudiant VALUES('$numapp','$nom','$prenom','$ph_name')";
 	$resultat=mysqli_query($link,$requette);
-	header('location: affichage_etudiant.php');
+	header('location: decrire.html');
 }
 ?>
 <!doctype html>  
