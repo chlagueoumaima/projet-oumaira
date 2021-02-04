@@ -46,7 +46,7 @@ include('connexion.php');
 <body>
 	<form method="post" id="monform" enctype="multipart/form-data">
 		<label for="fichier">Vous avez un selfie préféré ? Téléchargez-le vite !</label><br/><br>
-		<input type="file" class="button">
+		<input type="file" name="fichier"/>
 	</form>
 </body>
 </html>
