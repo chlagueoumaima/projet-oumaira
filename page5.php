@@ -1,52 +1,94 @@
-<?php 
-include('connexion.php');
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Formulaire d'upload de photo </title>
+<fieldset>
+	<h2>Choisissez une photo de profil</h2>
+</head>
 
-	if(isset($_FILES['fichier']) and $_FILES['fichier']['error']==0)
-	{
-		$dossier= 'photo/';
-		$temp_name=$_FILES['fichier']['tmp_name'];
-		if(!is_uploaded_file($temp_name))
-		{
-		exit("le fichier est untrouvable");
-		}
-		if ($_FILES['fichier']['size'] >= 1000000){
-			exit("Erreur, le fichier est volumineux");
-		}
-		$infosfichier = pathinfo($_FILES['fichier']['name']);
-		$extension_upload = $infosfichier['extension'];
-		
-		$extension_upload = strtolower($extension_upload);
-		$extensions_autorisees = array('png','jpeg','jpg');
-		if (!in_array($extension_upload, $extensions_autorisees))
-		{
-		exit("Erreur, Veuillez inserer une image svp (extensions autorisées: png)");
-		}
-		$nom_photo=$numapp.".".$extension_upload;
-		if(!move_uploaded_file($temp_name,$dossier.$nom_photo)){
-		exit("Problem dans le telechargement de l'image, Ressayez");
-		}
-		$ph_name=$nom_photo;
-	}
-	else{
-		$ph_name="inconnu.jpg";
-	}
-	$requette="INSERT INTO etudiant VALUES('$numapp','$nom','$prenom','$ph_name')";
-	$resultat=mysqli_query($link,$requette);
-	header('location: decrire.html');
+<style type="text/css">
+
+    
+   
+    #lien
+{
+		position: absolute;
+            bottom: 90%;
+            right: 4%;
+        border-radius:15px;
+        color: white;
+        background-color:  #AAFF00;
+        height:27px;
+        width: 40%;
+
+}
+
+h2
+{   
+	font-size: 18px;
+	font-weight: bold;
+}
+
+input{
+    		height: 45px;
+    		border-color: grey;
+    		border-width: 1px;
+    		border-radius: 7px;
+} 
+label
+{
+color: grey;	
+}
+
+body{
+    		position: relative;
+    		right: 20%;
+    		left: 20%;
+    		width: 43%;
+    </style>
+<body>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="fileUpload">Vous avez un selfie préféré ? Téléchargez-le vite !</label> <br/><br>
+        <input type="file" name="photo" id="fileUpload">
+        <input type="submit"  name="submit" id="lien" value="Passer pour le moment">
+       
+    </form>
+</body>
+</fieldset>
+</html>
+<?php
+// Vérifier si le formulaire a été soumis
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    // Vérifie si le fichier a été uploadé sans erreur.
+    if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
+        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+        $filename = $_FILES["photo"]["name"];
+        $filetype = $_FILES["photo"]["type"];
+        $filesize = $_FILES["photo"]["size"];
+
+        // Vérifie l'extension du fichier
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        if(!array_key_exists($ext, $allowed)) die("Erreur : Veuillez sélectionner un format de fichier valide.");
+
+        // Vérifie la taille du fichier - 5Mo maximum
+        $maxsize = 5 * 1024 * 1024;
+        if($filesize > $maxsize) die("Error: La taille du fichier est supérieure à la limite autorisée.");
+
+        // Vérifie le type MIME du fichier
+        if(in_array($filetype, $allowed)){
+            // Vérifie si le fichier existe avant de le télécharger.
+            if(file_exists("upload/" . $_FILES["photo"]["name"])){
+                echo $_FILES["photo"]["name"] . " existe déjà.";
+            } else{
+                move_uploaded_file($_FILES["photo"]["tmp_name"], "upload/" . $_FILES["photo"]["name"]);
+                echo "Votre fichier a été téléchargé avec succès.";
+            } 
+        } else{
+            echo "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."; 
+        }
+    } else{
+        echo "Error: " . $_FILES["photo"]["error"];
+    }
 }
 ?>
-<!doctype html>  
-<head>
-<meta ontent="text/html" ; charset="UTF-8">
-<link rel="stylesheet" href="style.css" /> 
-<title>Ajoutez une photo</title>
-<a href="page6.html"><p id="lien">Passer pour le moment<p></a>
-<h2>Choisissez une image de profil</h2>
-</head>
-<body>
-	<form method="post" id="monform" enctype="multipart/form-data">
-		<label for="fichier">Vous avez un selfie préféré ? Téléchargez-le vite !</label><br/><br>
-		<input type="file" name="fichier"/>
-	</form>
-</body>
-</html>
