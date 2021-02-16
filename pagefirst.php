@@ -67,8 +67,8 @@
     <p style="text-align: justify; color:grey;">
       Cette information ne sera pas affichée publiquement. Confirmez votre âge, même si ce compte est pour une entreprise, un animal de compagnie ou autre chose.
     </p>
-    <select size="1" name="months"id="months">
-    <option name="months"value="mois">Mois</option>
+    <select size="1" name="months"id="months" required="required">
+    <option name="months"value="">Mois</option>
     <option name="months" value="01">Janvier</option>
     <option name="months" value="02">Février</option>
     <option name="months" value="03">Mars</option>
@@ -88,7 +88,7 @@
   // Parcours du tableau
   
   echo '<select name="jours" id="jours" required="required">';
-  echo '<option value="jour">Jour</option>';
+  echo '<option value="">Jour</option>';
   for($i=1; $i<=31; $i++)
   {
       // Afficher la ligne
@@ -100,7 +100,7 @@
     <?php
   // Parcours du tableau
   echo '<select name="annees" id="annees" required="required">';
-  echo '<option value="annee">Année</option>';
+  echo '<option value="">Année</option>';
   for($i=1970; $i<=2021; $i++)
   {
       // Afficher la ligne
