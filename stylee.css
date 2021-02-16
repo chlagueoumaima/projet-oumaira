@@ -1,0 +1,173 @@
+body{
+overflow: hidden;	
+}
+.group{
+	border: 2px solid black;
+	padding: 30px;
+	
+	margin-top: 18px; 
+	margin-bottom:  200px;
+	width: 70%;
+	        position: relative;
+        left: 18%;
+         right: 20%;
+}
+.pass{
+	border: 2px solid black;
+	padding: 30px;
+	
+	margin-top: 100px; 
+	margin-bottom:  200px;
+	width: 70%;
+	        position: relative;
+        left: 18%;
+         right: 20%;
+}
+.ph{
+	border: 2px solid black;
+	padding: 30px;
+	
+	margin-top: 100px; 
+	margin-bottom:  200px;
+	
+	width: 70%;
+	        position: relative;
+	        top: 20%;
+        left: 18%;
+         right: 20%;
+}
+.tet{
+		border: 2px solid black;
+	padding: 30px;
+	
+	margin-top: 100px; 
+	margin-bottom:  210px;
+	width: 70%;
+	        position: relative;
+        left: 18%;
+         right: 20%;
+}
+
+textarea{
+
+
+    border-radius: 5px;
+width: 900px;
+height: 50px;
+     
+}
+    	#suivant{
+    		position: absolute;
+            bottom: 90%;
+            right: 4%;
+
+    		border-radius:15px;
+    		color: white;
+    		background-color:  #75B000;
+    		margin-top: 100px;
+    		width: 12%;
+    		height: 6%;
+
+
+}
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked),
+[type="radio"]:checked,
+[type="radio"]:not(:checked)
+{
+	position: absolute;
+	left: -9999px;
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked),
+.checkbox-budget:checked + label,
+.checkbox-budget:not(:checked) + label{
+
+
+	display: inline-block;
+	padding: 0;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	width: 150px;
+	height: 40px;
+	font-size: 10px;
+	line-height: 40px;
+	font-size: 12px;
+	letter-spacing: 1px;
+	margin: 0 auto;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	text-align: center;
+	border: 2px solid #82CDFC;
+	border-radius: 40px;
+	overflow: hidden;
+	cursor: pointer;
+	text-transform: uppercase;
+	
+
+    color: black;
+}
+.checkbox-budget:not(:checked) + label{
+	background-color: white;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+.checkbox-budget:checked + label{
+	color: white;
+	background-color: #82CDFC;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.checkbox-budget:checked + label span,
+.checkbox-budget:not(:checked) + label span{
+	position: relative;
+	display: block;
+}
+
+
+
+
+
+.centre
+{
+
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-start; 
+
+}
+#pas{
+		position: absolute;
+	left: 0px;
+	top: 3px;
+		width: 15px;
+	height: 15PX;
+	visibility: visible;
+}
+.sui{
+	border: 1px solid white;
+	background: #82CDFC;
+	position: relative;
+	left:800px;
+}
+.content
+{
+
+			border: 2px solid black;
+			padding: 8px;
+
+	
+	margin-top: 80px; 
+	margin-bottom:  20px;
+	width: 70%;
+	        position: relative;
+
+        left: 18%;
+         right: 20%;
+
+}
