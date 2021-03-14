@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -8,6 +7,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<style>
+
+ 
 		.menu{width:200px;
 			position: relative;
 		}
@@ -52,9 +53,30 @@ background-color:#3C3CEB;}
 	<span class="material-icons"style="left:100%;top:35px;position: relative;">auto_awesome</span>
 	<h5>Acceuil</h5>
 	<hr>
+            <?php
+                session_start();
+                if($_SESSION['mail'] !== "" && $_SESSION['mail'] !== "" ){
+                        $link = mysqli_connect("localhost","root","","glowfe")
+           or die('could not connect to database');
+    
+        $requete = "SELECT * FROM user where  mail = '".$_SESSION['mail']."' ";       
+        $exec_requete = mysqli_query($link,$requete);
+        $reponse      = mysqli_fetch_assoc($exec_requete);
+        $photo=$reponse['photo'];
+        $reponse['nom_prenom'];
+
+
+          
+                    
+                    // afficher un message
+                  echo  $reponse['nom_prenom'];
+                   echo "<img src=\"photo/$photo\" alt=\"image\" height=40 width=40/>";
+
+
+                }
+            ?>
 </div>
 <div>
-	<?php echo "<img src=\"photo/$photo\" alt=\"image\" height="40" width="40"/>"; ?>
 </div>
 <div class="center">
 	</div>
@@ -64,14 +86,21 @@ background-color:#3C3CEB;}
 	<a href="#"	class="home"><i class="material-icons"style="top:8px;position: relative">home</i>Accueil</a>
 	<a href="#"><i class="material-icons" style="top:8px;position: relative">explore</i>Explorer</a>
 	<a href="#"><i class="material-icons" style="top:8px;position: relative">notifications</i>Notifications</a>
-	<a href="#"><i class="material-icons"style="top:8px;position: relative"style="top:8px;position: relative">message</i>Messages</a>
-	<a href="#"><i class="material-icons"style="top:8px;position: relative">bookmark_border</i>Signets</a>
-	<a href="#"><i class="material-icons"style="top:8px;position: relative">list_alt</i>Listes</a>
+	<a href="messagerie.php"><i class="material-icons"style="top:8px;position: relative"style="top:8px;position: relative">message</i>Messages</a>
+	<a href="abonne.php"><i class="material-icons"style="top:8px;position: relative">bookmark_border</i>Signets</a>
+	<a href="follow.php"><i class="material-icons"style="top:8px;position: relative">list_alt</i>Listes</a>
 	<a href="#"><i class="material-icons"style="top:8px;position: relative">person</i>Profil</a>
 	<a href="#"><i class="material-icons"style="top:8px;position: relative">add_circle_outline</i>Plus</a>
+    <a href="deconnection.php"><i class="material-icons"style="top:8px;position: relative">lock</i>se deconnecter</a>
+
 </div>
 <button class="button">Tweeter</button>
 </nav>
+
+
 </form>
 </body>
 </html>
+
+
+
