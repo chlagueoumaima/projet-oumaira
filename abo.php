@@ -23,7 +23,7 @@ $mail=$_SESSION['mail'];
       h3{
   color:  #75B000;
       }
-    
+
         #suivant{
         position: absolute;
             bottom: 90%;
@@ -43,7 +43,7 @@ $mail=$_SESSION['mail'];
   background: #82CDFC;
   position: relative;
   left:590px;
- 
+
 }
   </style>
 </head>
@@ -52,10 +52,9 @@ $mail=$_SESSION['mail'];
 
   <?php
 
-    $link = mysqli_connect("localhost","root","","glowfe") or die("Echec de connexion à la base");
-    
-      /* $requete="SELECT * FROM user where mail='$mail'";
+                             include ("connexion.php");
 
+      /* $requete="SELECT * FROM user where mail='$mail'";
        $resultat=mysqli_query($link,$requete);
        
       $data=mysqli_fetch_assoc($resultat);*/
@@ -80,6 +79,6 @@ $nom=addslashes($dat['nom_prenom']);
     echo "<br><br>";
 }
 ?>
-<a href="accueil.php" id="suivant" class="sui" style=" text-decoration: none;" >Précédant</a>
+<a href="Acceuil.php" id="suivant" class="sui" style=" text-decoration: none;" >Précédant</a>
 </body>
-</html>
+</html> 
